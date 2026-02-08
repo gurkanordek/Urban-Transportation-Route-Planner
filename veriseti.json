@@ -1,0 +1,191 @@
+{
+  "city": "Izmit",
+  "taxi": {
+    "openingFee": 10.0,
+    "costPerKm": 4.0
+  },
+  "duraklar": [
+    {
+      "id": "bus_otogar",
+      "name": "Otogar (Bus)",
+      "type": "bus",
+      "lat": 3,
+      "lon": 4,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "bus_sekapark",
+          "mesafe": 3.5,
+          "sure": 10,
+          "ucret": 3.0
+        }
+      ],
+      "transfer": {
+        "transferStopId": "tram_otogar",
+        "transferSure": 2,
+        "transferUcret": 0.5
+      }
+    },
+    {
+      "id": "bus_sekapark",
+      "name": "Sekapark (Bus)",
+      "type": "bus",
+      "lat": 1,
+      "lon": 3,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "bus_yahyakaptan",
+          "mesafe": 2.0,
+          "sure": 8,
+          "ucret": 2.5
+        },
+        {
+          "stopId": "bus_symbolavm",
+          "mesafe": 4.0,
+          "sure": 12,
+          "ucret": 3.5
+        },
+        {
+          "stopId": "bus_41burda",
+          "mesafe": 4.5,
+          "sure": 14,
+          "ucret": 3.5
+        }
+      ],
+      "transfer": {
+        "transferStopId": "tram_sekapark",
+        "transferSure": 3,
+        "transferUcret": 0.0
+      }
+    },
+    {
+      "id": "bus_yahyakaptan",
+      "name": "Yahya Kaptan (Bus)",
+      "type": "bus",
+      "lat": 6,
+      "lon": 2.80,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "bus_umuttepe",
+          "mesafe": 5.0,
+          "sure": 12,
+          "ucret": 4.0
+        }
+      ],
+      "transfer": {
+        "transferStopId": "tram_yahyakaptan",
+        "transferSure": 2,
+        "transferUcret": 0.0
+      }
+    },
+    {
+      "id": "bus_umuttepe",
+      "name": "Umuttepe (Bus)",
+      "type": "bus",
+      "lat": 2.80,
+      "lon": 5,
+      "sonDurak": true,
+      "nextStops": [],
+      "transfer": null
+    },
+    {
+      "id": "bus_symbolavm",
+      "name": "Symbol AVM (Bus)",
+      "type": "bus",
+      "lat": 7,
+      "lon": 1,
+      "sonDurak": true,
+      "nextStops": [],
+      "transfer": null
+    },
+    {
+      "id": "bus_41burda",
+      "name": "41 Burda AVM (Bus)",
+      "type": "bus",
+      "lat": 1.20,
+      "lon": 0,
+      "sonDurak": true,
+      "nextStops": [],
+      "transfer": null
+    },
+    {
+      "id": "tram_otogar",
+      "name": "Otogar (Tram)",
+      "type": "tram",
+      "lat": 4,
+      "lon": 4,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "tram_yahyakaptan",
+          "mesafe": 1.2,
+          "sure": 5,
+          "ucret": 2.5
+        }
+      ],
+      "transfer": {
+        "transferStopId": "bus_otogar",
+        "transferSure": 2,
+        "transferUcret": 0.5
+      }
+    },
+    {
+      "id": "tram_yahyakaptan",
+      "name": "Yahya Kaptan (Tram)",
+      "type": "tram",
+      "lat": 5,
+      "lon": 3,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "tram_sekapark",
+          "mesafe": 2.0,
+          "sure": 6,
+          "ucret": 2.0
+        }
+      ],
+      "transfer": {
+        "transferStopId": "bus_yahyakaptan",
+        "transferSure": 2,
+        "transferUcret": 0.0
+      }
+    },
+    {
+      "id": "tram_sekapark",
+      "name": "Sekapark (Tram)",
+      "type": "tram",
+      "lat": 0.90,
+      "lon": 3.20,
+      "sonDurak": false,
+      "nextStops": [
+        {
+          "stopId": "tram_halkevi",
+          "mesafe": 3.0,
+          "sure": 7,
+          "ucret": 1.5
+        }
+      ],
+      "transfer": {
+        "transferStopId": "bus_sekapark",
+        "transferSure": 3,
+        "transferUcret": 0.0
+      }
+    },
+    {
+      "id": "tram_halkevi",
+      "name": "Halkevi (Tram)",
+      "type": "tram",
+      "lat": 0,
+      "lon": 2,
+      "sonDurak": true,
+      "nextStops": [],
+      "transfer": {
+        "transferStopId": "bus_sekapark",
+        "transferSure": 5,
+        "transferUcret": 0.5
+      }
+    }
+  ]
+}
