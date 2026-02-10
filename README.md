@@ -1,60 +1,59 @@
-# 🚌 Urban Transportation Route Planner (İzmit Şehir İçi Ulaşım Rota Planlayıcı)
+# 🚌 Urban Transportation Route Planner
 
-Bu proje, İzmit şehri için geliştirilmiş, farklı ulaşım modlarını (Otobüs, Tramvay, Taksi, Yürüyüş) entegre eden ve kullanıcı profillerine göre en uygun rotayı (en kısa süre veya en düşük maliyet) hesaplayan **Java** tabanlı bir simülasyon ve rota planlama uygulamasıdır.
+This project is a **Java-based** simulation and route planning application developed for the city of İzmit. It integrates different modes of transportation (Bus, Tram, Taxi, Walking) and calculates the most optimal route (shortest time or lowest cost) based on user profiles.
 
-## 📖 Proje Hakkında
+## 📖 About the Project
 
-Şehir içi ulaşımda çeşitliliğin artmasıyla birlikte, kullanıcıların en verimli rotayı seçmesi karmaşık bir hal almıştır. Bu proje, **Graf Teorisi (Graph Theory)** ve **Dijkstra Algoritması** kullanarak duraklar arasındaki bağlantıları analiz eder. Kullanıcının öğrenci veya yaşlı olması gibi durumları göz önüne alarak dinamik fiyatlandırma yapar ve A noktasından B noktasına en optimum güzergahı çizer.
+With the increasing diversity in urban transportation, choosing the most efficient route has become complex for users. This project analyzes connections between stops using **Graph Theory** and **Dijkstra's Algorithm**. It performs dynamic pricing by considering user profiles (such as students or the elderly) and plots the most optimal route from point A to point B.
 
-### 🚀 Öne Çıkan Özellikler
+### 🚀 Key Features
 
-* **Çoklu Ulaşım Modu:** Otobüs, Tramvay ve Taksi entegrasyonu.
-* **Kullanıcı Profili Bazlı Fiyatlandırma:**
-    * 🎓 **Öğrenci:** Belirli oranlarda indirim uygulanır.
-    * 👴 **65+ Yaş:** Özel tarife ve indirimler uygulanır.
-    * 👤 **Genel:** Standart tarife.
-* **Rota Optimizasyonu:**
-    * 📉 **En Düşük Maliyet:** Cüzdan dostu rotaları hesaplar.
-    * ⚡ **En Kısa Süre:** Zaman tasarrufu sağlayan rotaları hesaplar.
-* **Akıllı Aktarma:** Otobüs-Tramvay arası geçişlerde aktarma indirimlerini otomatik hesaplar.
-* **Taksi Hesaplaması:** Açılış ücreti ve km başına maliyet üzerinden dinamik taksi ücreti hesabı.
-* **Görsel Arayüz:** Java Swing ile geliştirilmiş kullanıcı dostu arayüz.
+* **Multi-Modal Transportation:** Integration of Bus, Tram, and Taxi.
+* **User Profile-Based Pricing:**
+    * 🎓 **Student:** Specific discount rates are applied.
+    * 👴 **65+ Age:** Special tariffs and discounts are applied.
+    * 👤 **General:** Standard tariff.
+* **Route Optimization:**
+    * 📉 **Lowest Cost:** Calculates wallet-friendly routes.
+    * ⚡ **Shortest Time:** Calculates time-saving routes.
+* **Smart Transfer:** Automatically calculates transfer discounts between Bus and Tram.
+* **Taxi Calculation:** Dynamic taxi fare calculation based on opening fee and cost per km.
+* **Visual Interface:** User-friendly interface developed with Java Swing.
 
-## 🛠️ Kullanılan Teknolojiler ve Mimari
+## 🛠️ Technologies and Architecture
 
-* **Dil:** Java (JDK 8+)
-* **Arayüz (GUI):** Java Swing
-* **Veri Formatı:** JSON (Durak ve hat bilgileri için)
-* **Algoritma:** Dijkstra En Kısa Yol Algoritması
-* **Tasarım Desenleri:**
-    * **OOP Prensipleri:** Kalıtım (Inheritance) ve Çok Biçimlilik (Polymorphism) `Arac` ve `Yolcu` sınıflarında etkin kullanılmıştır.
-    * **Strategy Pattern Benzeri Yapı:** Her araç türü (`Otobus`, `Tramvay`), `indirimUygula` metoduyla kendi maliyet stratejisini grafa uygular.
+* **Language:** Java (JDK 8+)
+* **Interface (GUI):** Java Swing
+* **Data Format:** JSON (For stop and line information)
+* **Algorithm:** Dijkstra's Shortest Path Algorithm
+* **Design Patterns:**
+    * **OOP Principles:** Inheritance and Polymorphism are effectively used in `Arac` (Vehicle) and `Yolcu` (Passenger) classes.
+    * **Strategy Pattern-like Structure:** Each vehicle type (`Otobus`, `Tramvay`) applies its own cost strategy to the graph via the `indirimUygula` (applyDiscount) method.
 
-## 📂 Sınıf Yapısı ve İşleyiş
+## 📂 Class Structure and Workflow
 
-Proje, sağlam bir Nesne Yönelimli Programlama altyapısına sahiptir:
+The project has a solid Object-Oriented Programming infrastructure:
 
-* **Arac (Abstract):** `Otobus`, `Tramvay` ve `Taksi` sınıfları buradan türetilir. Her araç, graf üzerindeki ağırlıkları (maliyetleri) kendi kurallarına göre manipüle eder.
-* **Yolcu (Abstract):** `Ogrenci`, `Yasli` ve `Genel` sınıfları buradan türetilir. İndirim oranları bu sınıflarda tanımlıdır.
-* **RotaHesaplayici:** Sistemin beyni olan bu sınıf, Dijkstra algoritmasını çalıştırarak graf üzerindeki en optimum yolu bulur.
-* **VeriOkuma:** `veriseti.json` dosyasını parse ederek durakları ve bağlantıları bir Graf yapısına dönüştürür.
+* **Arac (Abstract):** The `Otobus` (Bus), `Tramvay` (Tram), and `Taksi` (Taxi) classes are derived from here. Each vehicle manipulates the weights (costs) on the graph according to its own rules.
+* **Yolcu (Abstract):** The `Ogrenci` (Student), `Yasli` (Elderly), and `Genel` (General) classes are derived from here. Discount rates are defined in these classes.
+* **RotaHesaplayici (RouteCalculator):** The brain of the system; this class runs Dijkstra's algorithm to find the optimum path on the graph.
+* **VeriOkuma (DataReading):** Parses the `veriseti.json` file and converts stops and connections into a Graph structure.
 
-## ⚙️ Kurulum ve Çalıştırma
+## ⚙️ Installation and Execution
 
-Projeyi yerel makinenizde çalıştırmak için:
+To run the project on your local machine:
 
-### 1. Gereksinimler
-* Java Development Kit (JDK) yüklü olmalıdır.
-* Proje, JSON verilerini işlemek için `org.json` kütüphanesine ihtiyaç duyar. (Maven kullanıyorsanız `pom.xml` dosyasında tanımlıdır).
+### 1. Requirements
+* Java Development Kit (JDK) must be installed.
+* The project requires the `org.json` library to process JSON data. (If using Maven, it is defined in `pom.xml`).
 
-### 2. Veri Seti
-`src/main/resources` (veya proje kök dizini) altında `veriseti.json` dosyasının bulunduğundan emin olun. Bu dosya durak koordinatlarını ve bağlantı maliyetlerini içerir.
+### 2. Data Set
+Ensure that the `veriseti.json` file exists under `src/main/resources` (or the project root directory). This file contains stop coordinates and connection costs.
 
-### 3. Çalıştırma
-`src/proje1/Main.java` dosyasını derleyip çalıştırarak uygulamayı başlatabilirsiniz.
+### 3. Execution
+You can start the application by compiling and running the `src/proje1/Main.java` file.
 
 ```bash
-# Eğer terminalden derleyecekseniz (örnek):
+# If compiling from the terminal (example):
 javac -cp "lib/json.jar:." src/proje1/*.java
 java -cp "lib/json.jar:src" proje1.Main
-```
